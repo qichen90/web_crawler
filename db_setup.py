@@ -1,3 +1,6 @@
+__author__ = "QiChen"
+'''set up the database scheme using SQLAlchemy toolkit, for current version, it only has one table.'''
+
 import os
 import sys
 from sqlalchemy import Column, Integer, String, ForeignKey
@@ -7,6 +10,7 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+# interview information table
 class Interviews(Base):
 	__tablename__ = 'interview'
 
