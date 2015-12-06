@@ -5,8 +5,6 @@ import urllib2
 import re
 import sys
 import HTMLParser
-from BeautifulSoup import *
-from datetime import datetime
 from db_setup import Base, Interviews
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -47,22 +45,19 @@ class GlassDoor:
 			return None
 
 		# regular expression
-		# pattern = re.compile('<p.*?interviewDetails.*?>(.*?)</p>.*?<div.*?interviewQuestions.*?>.*?<ul.*?>(.*?)</ul>',re.S)
 		pattern = re.compile('<time.*?>(.*?)</time>.*?<p.*?interviewDetails.*?>(.*?)</p>',re.S)
-		# pattern_for_date = re.compile('<time.*?>(.*?)</time>')
 		pattern_per_question = re.compile('<span.*?interviewQuestion.*?>(.*?)</span>', re.S)
 		pattern_for_question = re.compile('<time.*?>(.*?)</time>.*?<div.*?interviewQuestions.*?>.*?<ul.*?>(.*?)</ul>', re.S)
 
 		
 		# find all the content wanted
 		contents = re.findall(pattern, pageCode)
-		# dates = re.findall(pattern_for_date, pageCode)
 		questions = re.findall(pattern_for_question, pageCode)
 		i = 0
 		for content in contents:
 			date = content[0]
 			date = date.lstrip().replace(',', '') # reformat the date string
-			if int(date[-4:]) <= year:
+			if int(date[-4:]) <= int(year):
 				return True
 
 			date2 = questions[i][0].lstrip().replace(',', '')
@@ -178,8 +173,8 @@ class GlassDoor:
 
 
 gd = GlassDoor()
-url = "http://www.glassdoor.com/Interview/Cvent-Software-Engineer-Interview-Questions-EI_IE104683.0,5_KO6,23.htm"
-# url = raw_input('Enter the website: ')
-# year = int(raw_input('The year not later than: '))
-year = 2012
+url = raw_input('Enter the website: ')
+year = raw_input('The year not later than: ')
+# url = "http://www.glassdoor.com/Interview/Cvent-Software-Engineer-Interview-Questions-EI_IE104683.0,5_KO6,23.htm"
+# year = 2012
 gd.start(url, year)
