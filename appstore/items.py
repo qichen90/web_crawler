@@ -17,4 +17,5 @@ class AppstoreItem(scrapy.Item):
     appid = scrapy.Field()
     intro = scrapy.Field()
     recommened = scrapy.Field()
+    thumbnail = scrapy.Field()
     pass
