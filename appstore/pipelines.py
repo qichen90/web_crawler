@@ -11,6 +11,6 @@ class AppstorePipeline(object):
 		self.file = open('appstore.dat', 'wb')
 
 	def process_item(self, item, spider):
-		val = "{0}\t{1}\t{2}\t{3}\t{4}\n".format(item['appid'], item['title'], item['intro'], item['recommened'], item['thumbnail'])
+		val = "{0}\t{1}\t{2}\t{3}\t{4}\n".format(item['appid'], item['title'], item['intro'], item['thumbnail'], item['recommened'])
 		self.file.write(val)
 		return item
