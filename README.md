@@ -4,4 +4,4 @@
 as well as the text file.</p>
 
 <h2>huawei_Appstore_spider</h2>
-<p>This mini project is to crawl the data of popular apps by their follow URLs from homepage of Huawei appstore and save the crawled data in a file. </p>
+<h4>1. Create a Scrapy pr oject to crawl the content in the Huawei Appstore homepage. </h4>
