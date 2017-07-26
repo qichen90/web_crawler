@@ -56,9 +56,14 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'appstore.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+#add settings for javascript rendering
+# DOWNLOADER_MIDDLEWARES = {
+#    'scrapyjs.SplashMiddleware': 725,
+# }
+
+# SPLASH_URL = 'http://localhost:8050/'
+# DUPEFILTER_CLASS = 'scrapyjs.SplashAwareDupeFilter'
+# HTTPCACHE_STORAGE = 'scrapyjs.SplashAwareFSCacheStorage'
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
