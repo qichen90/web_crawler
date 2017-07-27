@@ -56,10 +56,10 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#add settings for javascript rendering
-# DOWNLOADER_MIDDLEWARES = {
-#    'scrapyjs.SplashMiddleware': 725,
-# }
+DOWNLOADER_MIDDLEWARES = {
+   # 'scrapyjs.SplashMiddleware': 725,
+   'appstore.random_useragent.RandomUserAgentMiddleware': 400, #add useragent to avoid block
+}
 
 # SPLASH_URL = 'http://localhost:8050/'
 # DUPEFILTER_CLASS = 'scrapyjs.SplashAwareDupeFilter'

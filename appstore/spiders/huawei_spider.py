@@ -15,13 +15,39 @@ class HuaweiSpider(scrapy.Spider):
 	def parse(self, response):
 		page = Selector(response)
 		hrefs = page.xpath('//h4[@class="title"]/a/@href')
+		# add one user agent to avoid block is enough for huawei appstore
+		headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'} 
 
 		for href in hrefs:
 			url = href.extract()
-			headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
 			yield scrapy.Request(url=url, headers=headers, callback=self.parse_item)
 
-	def parse_item(self, response):
+		## get next pages: scrapy can gaurantee no duplicate url is requested
+		page_ctrl = page.xpath('//div[@class="page-ctrl ctrl-app"]')
+		hasNextPage = page_ctrl.xpath('.//em[@class="arrow-grey-lt"]').extract()
+		
+		PAGES_WANT = 3
+		##### TODO: test next page function
+		# if hasNextPage:
+		# 	current_page = int(page_ctrl.xpath('./span[not(@*)]/text()').extract_first())
+		# 	print "current page number:", current_page
+
+		# 	if current_page >= PAGES_WANT:#get first (PAGES_WANT - 1) pages
+		# 		return 
+		# 	next_page = str(current_page + 1)
+		# 	next_url = self.start_urls[0] + "/" + next_page
+
+		# 	request = scrapy.Request(url=next_url, headers=headers, callback=self.parse, meta={
+		# 		'splash':{
+		# 			'endpoint': 'render.html',
+		# 			'args': {'wait': 0.5}
+		# 		},
+
+		# 	})
+
+
+
+	def parse_item(self, response): ## get details
 		page = Selector(response)
 		item = AppstoreItem()
 
