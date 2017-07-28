@@ -57,13 +57,14 @@ ROBOTSTXT_OBEY = True
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
+   'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None, # stop scrapy default user-agent
    # 'scrapyjs.SplashMiddleware': 725,
    'appstore.random_useragent.RandomUserAgentMiddleware': 400, #add useragent to avoid block
 }
 
-# SPLASH_URL = 'http://localhost:8050/'
-# DUPEFILTER_CLASS = 'scrapyjs.SplashAwareDupeFilter'
-# HTTPCACHE_STORAGE = 'scrapyjs.SplashAwareFSCacheStorage'
+# SPLASH_URL = 'http://localhost:8050/'#'Docker_host_IP: container_port'
+# DUPEFILTER_CLASS = 'scrapyjs.SplashAwareDupeFilter' # set Splash to avoid duplicates
+# HTTPCACHE_STORAGE = 'scrapyjs.SplashAwareFSCacheStorage'# when use Splash http cache, assign a cache storage 
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
