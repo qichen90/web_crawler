@@ -18,4 +18,4 @@ class AppstoreItem(scrapy.Item):
     intro = scrapy.Field()
     recommened = scrapy.Field()
     thumbnail = scrapy.Field()
-    pass
+    # pass

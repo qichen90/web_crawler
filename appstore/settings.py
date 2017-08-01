@@ -15,9 +15,14 @@ SPIDER_MODULES = ['appstore.spiders']
 NEWSPIDER_MODULE = 'appstore.spiders'
 
 ITEM_PIPELINES = {
-	'appstore.pipelines.AppstorePipeline': 300, #priority number
+	'appstore.pipelines.AppstoreMongodbPipeline': 3, #priority number
+	# 'appstore.pipelines.AppstorePipeline': 300, #priority number
 }
 DOWNLOAD_DELAY=5# 5secs
+
+#mongoDB settings
+MONGO_URI = "127.0.0.1:27017"
+MONGO_DATABASE = "appstore"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'appstore (+http://www.yourdomain.com)'
