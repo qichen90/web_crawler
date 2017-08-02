@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Huawei Appstore crawler</title>
+</head>
+
+<body>
+	{%for app in apps%}
+	<h4>{{app.title}}</h4>
+	<div>{{app.intro}}</div>
+	<div>{{app.url}}</div>
+	<ul>
+		{%for rec in app.recommends%}
+		<li>{{rec.name}}</li>
+		{%endfor%}
+	</url>
+	<hr>
+	{%endfor%}
+</body>
+</html>
