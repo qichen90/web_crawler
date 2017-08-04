@@ -26,8 +26,10 @@ class HuaweiSpider(scrapy.Spider):
 		hrefs = page.xpath('//h4[@class="title"]/a/@href')
 		# add one user agent to avoid block is enough for huawei appstore
 		# headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'} 
-
+		count = 0
 		for href in hrefs:
+			if count > 2:
+				return 
 			url = href.extract()
 			# yield scrapy.Request(url=url, headers=headers, callback=self.parse_item)
 			yield scrapy.Request(url=url, callback=self.parse_item)
