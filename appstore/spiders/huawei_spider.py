@@ -11,12 +11,8 @@ class HuaweiSpider(scrapy.Spider):
 		start_urls = ["http://appstore.huawei.com/more/all"]
 		for url in start_urls:
 			# yield scrapy.Request(url=url, headers=headers)
-			# yield scrapy.Request(url=url, meta={
-			# 	'splash':{
-			# 		'endpoint': 'render.html',
-			# 		'args': {'wait': 0.5}
-			# 	},
-
+			# yield SplashRequest(url, args={'wait': 0.5}, 
+			#	'endpoint': 'render.html',
 			# })
 			yield scrapy.Request(url=url)
 
