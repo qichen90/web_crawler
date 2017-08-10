@@ -63,7 +63,7 @@ ROBOTSTXT_OBEY = True
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None, # stop scrapy default user-agent
-   # 'scrapyjs.SplashMiddleware': 725,
+   # 'scrapy_splash.SplashMiddleware': 725,
    'appstore.random_useragent.RandomUserAgentMiddleware': 400, #add useragent to avoid block
 }
 
