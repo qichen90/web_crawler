@@ -2,6 +2,7 @@ import scrapy
 import re
 from scrapy.selector import Selector
 from appstore.items import AppstoreItem
+from scrapy_splash import SplashRequest
 
 class HuaweiSpider(scrapy.Spider):
 	name = "huawei"
