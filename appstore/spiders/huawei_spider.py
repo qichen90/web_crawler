@@ -7,15 +7,17 @@ from scrapy_splash import SplashRequest
 class HuaweiSpider(scrapy.Spider):
 	name = "huawei"
 	allowed_domains = ["huawei.com"]
-	start_urls = ["http://appstore.huawei.com/more/all"]
 
 	def start_requests(self):
+		start_urls = ["http://appstore.huawei.com/more/all/1"]
+		### abnormal searches "http://appstore.huawei.com/search/*****"
+
 		# headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'}
-		for url in self.start_urls:
+		for url in start_urls:
 			# yield scrapy.Request(url=url, headers=headers) # setup user-agent in this file
 			# yield scrapy.Request(url=url)
 
-			###Notes: keep docker running for 8050 so that splach can work
+			###Notes: run docker at 8050 so that splach can work
 			###docker run -p 8050:8050 scrapinghub/splash
 			yield SplashRequest(url, args={'wait': 0.5}, 
 				endpoint= 'render.html',
@@ -53,10 +55,9 @@ class HuaweiSpider(scrapy.Spider):
 			if current_page >= PAGES_WANT:#get first (PAGES_WANT - 1) pages
 				return 
 			next_page = str(current_page + 1)
-			next_url = self.start_urls[0] + "/" + next_page
-			#### if start_urls is not global variable, then we can use codes below to generate next_url
-			# url = response.url
-			# next_url = url[:url.rfind('l') + 1] + "/" + next_page
+			# next_url = self.start_urls[0] + "/" + next_page
+			url = response.url
+			next_url = url[:url.rfind('l') + 1] + "/" + next_page
 
 			# print next_url
 

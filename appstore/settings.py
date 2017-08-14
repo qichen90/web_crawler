@@ -14,9 +14,11 @@ BOT_NAME = 'appstore'
 SPIDER_MODULES = ['appstore.spiders']
 NEWSPIDER_MODULE = 'appstore.spiders'
 
+# Configure item pipelines
+# See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-	# 'appstore.pipelines.AppstoreMongodbPipeline': 3, #priority number
-	'appstore.pipelines.AppstorePipeline': 300, #priority number
+	'appstore.pipelines.AppstoreMongodbPipeline': 3, #priority number
+	# 'appstore.pipelines.AppstorePipeline': 300, #priority number
 }
 DOWNLOAD_DELAY=5# 5secs
 
@@ -79,12 +81,6 @@ HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'# when use Splash h
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
 #EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-#}
-
-# Configure item pipelines
-# See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'appstore.pipelines.AppstorePipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
